@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 const FilterCard = ({ setFilters, setIsloading }) => {
+  const [gdata, setGdata] = useState({
+    rangeDistance: 0,
+    fromPosition: 0,
+    toPosition: 0,
+  });
+
+  const [linearGradient1, setlinearGradient1] = useState(``);
+
+  const [linearGradient2, setlinearGradient2] = useState(``);
+
   function convertToIndianNumberingSystem(price) {
     if (price >= 10000000) {
       return (price / 10000000).toFixed(1) + " Cr";
@@ -36,31 +46,26 @@ const FilterCard = ({ setFilters, setIsloading }) => {
   };
 
   useEffect(() => {
-    const sliderEl = document.getElementById("customRange4");
-    const sliderEl2 = document.getElementById("customRange5");
+    setGdata({ ...gdata, rangeDistance: 95000000 - 0, fromPosition: udata.budgetFrom - 0, toPosition: udata.budgetTo - 0 });
 
-    const rangeDistance = 95000000 - 0;
-    const fromPosition = udata.budgetFrom - 0;
-    const toPosition = udata.budgetTo - 0;
+    setlinearGradient1(`linear-gradient(
+      to left,
+      #ccc 0%,
+      #ccc ${(gdata.fromPosition / gdata.rangeDistance) * 95000000}%,
+      #533fdb ${(gdata.fromPosition / gdata.rangeDistance) * 100}%,
+      #533fdb ${(gdata.toPosition / gdata.rangeDistance) * 100}%, 
+      #ccc ${(gdata.toPosition / gdata.rangeDistance) * 100}%, 
+      #ccc 100%)`);
 
-    sliderEl.style.background = `linear-gradient(
-        to left,
+    setlinearGradient2(`linear-gradient(
+        to right,
         #ccc 0%,
-        #ccc ${(fromPosition / rangeDistance) * 95000000}%,
-        #533fdb ${(fromPosition / rangeDistance) * 100}%,
-        #533fdb ${(toPosition / rangeDistance) * 100}%, 
-        #ccc ${(toPosition / rangeDistance) * 100}%, 
-        #ccc 100%)`;
-
-    sliderEl2.style.background = `linear-gradient(
-            to right,
-            #ccc 0%,
-            #ccc ${(fromPosition / rangeDistance) * 100}%,
-            #533fdb ${(fromPosition / rangeDistance) * 100}%,
-            #533fdb ${(toPosition / rangeDistance) * 100}%, 
-            #ccc ${(toPosition / rangeDistance) * 100}%, 
-            #ccc 100%)`;
-  }, [udata.budgetFrom, udata.budgetTo, {}]);
+        #ccc ${(gdata.fromPosition / gdata.rangeDistance) * 100}%,
+        #533fdb ${(gdata.fromPosition / gdata.rangeDistance) * 100}%,
+        #533fdb ${(gdata.toPosition / gdata.rangeDistance) * 100}%, 
+        #ccc ${(gdata.toPosition / gdata.rangeDistance) * 100}%, 
+        #ccc 100%)`);
+  }, [udata.budgetFrom, udata.budgetTo]);
 
   return (
     <div className="card w-100 border-0 shadow-sm">
@@ -119,6 +124,7 @@ const FilterCard = ({ setFilters, setIsloading }) => {
                   const newBudgetFrom = newValue <= udata.budgetTo - 1 ? newValue : udata.budgetFrom;
                   setUdata({ ...udata, budgetFrom: newBudgetFrom });
                 }}
+                style={{ background: linearGradient1 }}
                 value={udata.budgetFrom}
               />
 
@@ -133,6 +139,7 @@ const FilterCard = ({ setFilters, setIsloading }) => {
                   const newBudgetTo = newValue > udata.budgetFrom + 1 ? newValue : udata.budgetTo;
                   setUdata({ ...udata, budgetTo: newBudgetTo });
                 }}
+                style={{ background: linearGradient2 }}
                 value={udata.budgetTo}
               />
             </div>
