@@ -8,8 +8,8 @@ const Header = () => {
           India<span className="text-primary">Reality</span>
         </a>
         <div className="d-flex">
-          <button className="btn btn-lg btn-light border-secondary fs-6 px-lg-4 py-lg-3  me-lg-4 me-2 defaultRound">Login</button>
-          <button className="btn btn-lg btn-primary defaultRound fs-6 px-lg-4 py-lg-3">
+          <button className="btn btn-lg btn-light border-secondary fs-6 px-md-4 py-md-3 py-2 px-2  me-lg-4 me-2 defaultRound">Login</button>
+          <button className="btn btn-lg btn-primary defaultRound fs-6 px-md-4 py-md-3 py-2 px-2">
             Get Started <img className="ms-2" src="./icons/arrowdup.svg" />
           </button>
         </div>

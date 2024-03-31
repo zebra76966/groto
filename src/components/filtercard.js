@@ -60,7 +60,7 @@ const FilterCard = ({ setFilters, setIsloading }) => {
             #533fdb ${(toPosition / rangeDistance) * 100}%, 
             #ccc ${(toPosition / rangeDistance) * 100}%, 
             #ccc 100%)`;
-  }, [udata.budgetFrom, udata.budgetTo]);
+  }, [udata.budgetFrom, udata.budgetTo, {}]);
 
   return (
     <div className="card w-100 border-0 shadow-sm">
@@ -178,7 +178,7 @@ const FilterCard = ({ setFilters, setIsloading }) => {
           </div>
         </form>
 
-        <button className="btn btn-lg btn-primary w-100 mt-4" type="button" onClick={handleApplyFilters}>
+        <button className="btn btn-lg btn-primary w-100 mt-4" type="button" onClick={handleApplyFilters} data-bs-dismiss="modal">
           Apply Filters
         </button>
       </div>
