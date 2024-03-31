@@ -1,3 +1,13 @@
+# Resources Used
+
+1. Bootstrap 5 (CSS framework)
+2. Font Awesome 4
+3. Mockroo for mock data and unsaplash for images
+
+==================================================
+
+# React app running proccess on your local machine
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
