@@ -3,6 +3,7 @@
 1. Bootstrap 5 (CSS framework)
 2. Font Awesome 4
 3. Mockroo for mock data and unsaplash for images
+4. AOS for animations
 
 ==================================================
 
